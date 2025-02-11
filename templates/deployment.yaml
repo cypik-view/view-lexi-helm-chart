@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lexi
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: lexi
+  template:
+    metadata:
+      labels:
+        app: lexi
+    spec:
+      containers:
+        - name: lexi
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8201
+          env:
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: "{{ $value }}"
+            {{- end }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config
+              subPath: view.json
+            - name: shared-storage
+              mountPath: /app/assets
+            - name: shared-storage
+              mountPath: /app/logs
+            - name: sourcedocs-volume
+              mountPath: /app/sourcedocs/default
+              subPath: default
+            - name: shared-storage
+              mountPath: /app/temp
+            - name: shared-storage
+              mountPath: /app/ingest
+            - name: shared-storage
+              mountPath: /app/webhookreq
+            - name: shared-storage
+              mountPath: /app/webhookresp
+            - name: shared-storage
+              mountPath: /app/controllog
+            - name: shared-storage
+              mountPath: /app/controlapi
+            - name: shared-storage
+              mountPath: /app/controltoken
+      volumes:
+        - name: config-volume
+          configMap:
+            name: lexi-config
+            items:
+              - key: view.json
+                path: view.json
+        - name: sourcedocs-volume
+          configMap:
+            name: sourcedocs-config
+            items:
+              - key: default
+                path: default
+        - name: shared-storage
+          persistentVolumeClaim:
+            claimName: lexi-shared-pvc
