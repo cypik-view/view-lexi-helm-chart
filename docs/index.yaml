@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  view-lexi:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-02-11T18:32:46.795353072+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 1d1e730fef44ba494322e40adcd001ea04c0db8bcd7c8c1360fcbb11116cee82
+    name: view-lexi
+    type: application
+    urls:
+    - https://github.com/cypik-view/view-lexi-helm-chart.git/charts/view-lexi-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-02-11T18:32:46.79443933+05:30"
