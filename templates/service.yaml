@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: lexi-service
+  name: {{ .Values.service.name }}
 spec:
   selector:
     app: lexi
   ports:
     - protocol: TCP
       port: {{ .Values.service.port }}
-      targetPort: 8201
+      targetPort: {{ .Values.service.targetPort }}
+  type: {{ .Values.service.type }}
