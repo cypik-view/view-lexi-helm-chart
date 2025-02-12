@@ -3,12 +3,12 @@ entries:
   view-lexi:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-02-12T13:08:02.630935146+05:30"
+    created: "2025-02-12T13:19:04.77519889+05:30"
     description: A Helm chart for Kubernetes
-    digest: 54d41416e6f2a111d69ecb2b17496257eecdd50d54177468bcbd2ec4c44a37b1
+    digest: 32256c68e5593ae6d830a8243ee816fc478f7fcdf46cd5130e03ac565b772374
     name: view-lexi
     type: application
     urls:
     - view-lexi-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-12T13:08:02.629414338+05:30"
+generated: "2025-02-12T13:19:04.773927901+05:30"
